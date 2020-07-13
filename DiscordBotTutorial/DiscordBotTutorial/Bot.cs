@@ -7,9 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
+using DiscordBotTutorial.Commands;
 
 namespace DiscordBotTutorial
 {
+    //this video was used for the tutorial
+    //https://www.youtube.com/watch?v=9ooZ0_IkPVk
     public class Bot
     {
         //Current discord client being used
@@ -58,10 +61,14 @@ namespace DiscordBotTutorial
                 StringPrefixes = new string[] { configJson.CommandPrefix },
                 EnableDms = false,
                 //Allows you to say @Bot command
-                EnableMentionPrefix = true
+                EnableMentionPrefix = true,
+                DmHelp = false           
             };
 
             Commands = DiscordClient.UseCommandsNext(cnc);
+
+            //register the command
+            Commands.RegisterCommands<FunCommand>();
 
             await DiscordClient.ConnectAsync();
 

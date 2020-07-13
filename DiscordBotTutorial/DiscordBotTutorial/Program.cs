@@ -7,7 +7,14 @@ namespace DiscordBotTutorial
         static void Main(string[] args)
         {
             Bot bot = new Bot();
-            bot.RunAsync().GetAwaiter().GetResult();
+            try
+            {
+                bot.RunAsync().GetAwaiter().GetResult();
+            }
+            catch(Exception e)
+            {
+                
+            }
         }
     }
 }
